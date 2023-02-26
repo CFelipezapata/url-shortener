@@ -1,0 +1,6 @@
+<form method="post">
+  {% csrf_token %}
+  <label for="long_url">Long URL:</label>
+  <input type="url" id="long_url" name="long_url" required />
+  <button type="submit">Shorten URL</button>
+</form>
