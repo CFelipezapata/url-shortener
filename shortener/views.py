@@ -2,7 +2,10 @@ from django.shortcuts import render, redirect
 from .models import ShortURL
 import string
 import random
+from rest_framework.permissions import IsAdminUser
+from rest_framework.decorators import permission_classes
 
+@permission_classes((IsAdminUser, ))
 def shorten(request):
     if request.method == 'POST':
         long_url = request.POST['long_url']
