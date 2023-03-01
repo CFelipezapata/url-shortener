@@ -22,6 +22,7 @@ INSTALLED_APPS = [
     'django.contrib.sessions',
     'django.contrib.messages',
     'django.contrib.staticfiles',
+    'rest_framework',
     'shortener',
 ]
 
@@ -52,6 +53,10 @@ TEMPLATES = [
         },
     },
 ]
+
+REST_FRAMEWORK = {
+    'EXCEPTION_HANDLER': 'shortener.views.custom_exception_handler'
+}
 
 WSGI_APPLICATION = 'urlshortener.wsgi.application'
 
