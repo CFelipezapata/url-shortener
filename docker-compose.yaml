@@ -2,6 +2,7 @@ version: "3"
 services:
   db:
     image: postgres
+    container_name: post_db
     environment:
       POSTGRES_USER: postgres
       POSTGRES_DB: postgres
@@ -9,12 +10,14 @@ services:
     volumes:
       - pgdata:/var/lib/posgresql/data
   shortener:
+    container_name: urlshortener
     build:
       context: .
     ports:
       - "8000:8000"
     volumes:
       - ./urlshortener:/urlshortener
+      - ./.env:/urlshortener/.env
     command: python manage.py runserver 0.0.0.0:8000
     depends_on:
       - db
