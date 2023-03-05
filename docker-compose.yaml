@@ -8,7 +8,7 @@ services:
       POSTGRES_DB: postgres
       POSTGRES_PASSWORD: pos1234
     volumes:
-      - pgdata:/var/lib/posgresql/data
+      - pgdata:/var/lib/postgresql/data
   shortener:
     container_name: urlshortener
     build:
@@ -16,7 +16,6 @@ services:
     ports:
       - "8000:8000"
     volumes:
-      - ./urlshortener:/urlshortener
       - ./.env:/urlshortener/.env
     command: python manage.py runserver 0.0.0.0:8000
     depends_on:
